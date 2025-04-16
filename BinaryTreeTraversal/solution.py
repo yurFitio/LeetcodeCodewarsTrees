@@ -38,5 +38,15 @@ def _in_order(node: Node, output: list):
 
 # Post-order traversal
 def post_order(node):
-    return []
+    if not isinstance(node, Node):
+        return []
+    output = []
+    _in_order(node, output)
+    return output
 
+def _post_order(node: Node, output: list):
+    if node.right:
+        _in_order(node.right, output)
+    if node.left:
+        _in_order(node.left, output)
+    output.append(node.data)
