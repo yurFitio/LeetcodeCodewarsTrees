@@ -41,12 +41,12 @@ def post_order(node):
     if not isinstance(node, Node):
         return []
     output = []
-    _in_order(node, output)
+    _post_order(node, output)
     return output
 
 def _post_order(node: Node, output: list):
-    if node.right:
-        _in_order(node.right, output)
     if node.left:
-        _in_order(node.left, output)
+        _post_order(node.left, output)
+    if node.right:
+        _post_order(node.right, output)
     output.append(node.data)
